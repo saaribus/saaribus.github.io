@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Simple gym workout card index">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Gym Cards</title>
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div>
+        <h1>Gym Cards</h1>
+        <p id="progressText">G1 of G8</p>
+      </div>
+      <button id="settingsButton" class="icon-button" aria-label="Settings">⚙</button>
+    </header>
+
+    <section id="card" class="exercise-card" aria-live="polite">
+      <div class="card-top">
+        <button id="previousCard" class="small-button">←</button>
+        <h2 id="exerciseName">G1</h2>
+        <button id="nextCard" class="small-button">→</button>
+      </div>
+
+      <div class="history">
+        <div class="history-header">
+          <span>Date</span>
+          <span>Iteration</span>
+          <span>Resistance</span>
+          <span>Reps</span>
+        </div>
+        <div id="historyRows"></div>
+      </div>
+
+      <div class="current">
+        <div class="current-label">TODAY</div>
+        <div class="current-grid">
+          <div class="field readonly-field">
+            <label>Date</label>
+            <div id="currentDate" class="readonly-value"></div>
+          </div>
+
+          <div class="field readonly-field">
+            <label>Iteration</label>
+            <div id="currentIteration" class="readonly-value"></div>
+          </div>
+
+          <div class="field">
+            <label for="resistance">Resistance</label>
+            <input id="resistance" type="text" inputmode="decimal" autocomplete="off" placeholder="kg">
+          </div>
+
+          <div class="field">
+            <label for="repetitions">Reps</label>
+            <input id="repetitions" type="number" inputmode="numeric" min="0" step="1" placeholder="10">
+          </div>
+        </div>
+      </div>
+
+      <button id="saveNext" class="next-button">SAVE &amp; NEXT →</button>
+    </section>
+
+    <div class="bottom-actions">
+      <button id="installButton" class="secondary-button hidden">INSTALL APP</button>
+      <button id="historyButton" class="secondary-button">FULL HISTORY</button>
+    </div>
+  </main>
+
+  <dialog id="historyDialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2>Full History</h2>
+        <button id="closeHistory" class="icon-button">✕</button>
+      </div>
+      <div id="fullHistory"></div>
+    </div>
+  </dialog>
+
+  <dialog id="settingsDialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2>Settings</h2>
+        <button id="closeSettings" class="icon-button">✕</button>
+      </div>
+      <p class="dialog-text">
+        Your workout data is stored locally on this phone/browser.
+        It is not uploaded to a server.
+      </p>
+      <button id="exportButton" class="secondary-button wide">EXPORT DATA</button>
+      <label class="import-label secondary-button wide">
+        IMPORT DATA
+        <input id="importFile" type="file" accept=".json,application/json">
+      </label>
+      <button id="clearButton" class="danger-button">DELETE ALL DATA</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
