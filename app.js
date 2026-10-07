@@ -36,15 +36,24 @@ function today() {
   });
 }
 
+function getTodayIteration(exerciseName) {
+  const history = data[exerciseName] || [];
+  const todayString = today();
+
+  const entriesToday = history.filter(row => row.date === todayString);
+
+  return (entriesToday.length % 3) + 1;
+}
+
 function currentExercise() {
   return EXERCISES[currentIndex];
 }
 
 function render() {
   const name = currentExercise();
-  const history = data[name] || [];
-  const nextIteration = history.length + 1;
-
+ const history = data[name] || [];
+const nextIteration = getTodayIteration(name);
+  
   $("exerciseName").textContent = name;
   $("progressText").textContent = `${name} of ${EXERCISES.length}`;
   $("currentDate").textContent = today();
@@ -86,7 +95,7 @@ function saveCurrentAndNext() {
   data[name].push({
     date: today(),
     timestamp: new Date().toISOString(),
-    iteration: data[name].length + 1,
+   iteration: getTodayIteration(name),
     resistance,
     repetitions: Number(repetitions)
   });
