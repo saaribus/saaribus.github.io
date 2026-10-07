@@ -38,29 +38,13 @@ function today() {
 
 function getTodayIteration(exerciseName) {
   const history = data[exerciseName] || [];
-  const now = new Date();
+  const todayString = today();
 
   const entriesToday = history.filter(row => {
-
-    // New data: use timestamp
-    if (row.timestamp) {
-      const entryDate = new Date(row.timestamp);
-
-      return (
-        entryDate.getFullYear() === now.getFullYear() &&
-        entryDate.getMonth() === now.getMonth() &&
-        entryDate.getDate() === now.getDate()
-      );
-    }
-
-    // Old imported data: use the displayed date
-    return row.date === today();
+    return row.date === todayString;
   });
 
-  return (entriesToday.length % 3) + 1;
-}
-
-  return (entriesToday.length % 3) + 1;
+  return entriesToday.length + 1;
 }
 
 function currentExercise() {
