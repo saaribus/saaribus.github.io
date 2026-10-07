@@ -263,4 +263,15 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-render();
+const welcomeScreen = document.getElementById("welcomeScreen");
+const gymApp = document.getElementById("gymApp");
+const startTraining = document.getElementById("startTraining");
+
+startTraining.addEventListener("click", () => {
+  welcomeScreen.classList.add("hidden");
+  gymApp.classList.remove("hidden");
+
+  // Always start a training session with G1
+  currentIndex = 0;
+  render();
+});
