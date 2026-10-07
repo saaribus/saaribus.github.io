@@ -326,3 +326,52 @@ dialog::backdrop {
     font-size: 11px;
   }
 }
+
+/* ------------------------------
+   Welcome screen
+   ------------------------------ */
+
+.welcome-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background: var(--background);
+}
+
+.welcome-content {
+  width: min(100%, 500px);
+}
+
+.welcome-content h1 {
+  font-size: 38px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+
+.welcome-content p {
+  color: var(--muted);
+  font-size: 17px;
+  margin-bottom: 32px;
+}
+
+.start-button {
+  width: 100%;
+  min-height: 60px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  cursor: pointer;
+}
+
+.start-button:active {
+  transform: scale(.99);
+}
